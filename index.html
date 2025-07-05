@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Chakra Coffee & Brunch</title>
+
+  <!-- Tipografía Darrell Rolando personalizada -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Darrell+Rolando:wght@300;400;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #ffffff;
+      --primary: #c66c27;
+      --accent: #ffffff;
+      --text: #2b1e1e;
+      --white: #f4efe8;
+      --shadow: rgba(0, 0, 0, 0.05);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Darrell Rolando', serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    header {
+      width: 100%;
+      background-color: var(--white);
+      box-shadow: 0 2px 6px var(--shadow);
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 1000;
+    }
+
+    .navbar {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .navbar img {
+      height: 80px;
+      object-fit: contain;
+    }
+
+    .nav-toggle {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+    }
+
+    .nav-toggle span {
+      height: 2px;
+      width: 25px;
+      background: var(--text);
+      margin-bottom: 5px;
+      border-radius: 2px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--text);
+      font-weight: 600;
+      transition: color 0.3s;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    .nav-links a:hover {
+      color: var(--primary);
+    }
+
+    .hero {
+      margin-top: 100px;
+      background: url('1.jpeg') center/cover no-repeat;
+      height: 90vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      position: relative;
+      color: var(--white);
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0.4);
+      z-index: 1;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 700px;
+    }
+
+    .hero h1 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+    }
+
+    section {
+      padding: 4rem 1.5rem;
+      width: 100%;
+      background: var(--white);
+      box-shadow: 0 0 10px var(--shadow);
+      margin-top: 4rem;
+    }
+
+    section h2 {
+      font-size: 2rem;
+      text-align: center;
+      margin-bottom: 2rem;
+      color: var(--primary);
+    }
+
+    section p {
+      font-size: 1.1rem;
+      text-align: center;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    iframe, img {
+      width: 100%;
+      border: none;
+      border-radius: 10px;
+      margin-top: 1rem;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    input, textarea {
+      padding: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    button {
+      padding: 1rem 2rem;
+      background-color: var(--primary);
+      color: white;
+      font-weight: bold;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    footer {
+      text-align: center;
+      padding: 2rem;
+      background-color: #f4efe8;
+      color: var(--text);
+      font-size: 0.9rem;
+      margin-top: 4rem;
+    }
+
+    .whatsapp-float {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      z-index: 999;
+    }
+
+    .whatsapp-float img {
+      width: 60px;
+      height: 60px;
+    }
+
+    @media (max-width: 768px) {
+      .nav-toggle {
+        display: flex;
+      }
+
+      .nav-links {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: var(--white);
+        flex-direction: column;
+        display: none;
+        padding: 1rem;
+      }
+
+      .nav-links.open {
+        display: flex;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="navbar">
+      <a href="#top"><img src="logo2.png" alt="Logo Chakra Coffee & Brunch" class="logo" /></a>
+      <div class="nav-toggle" onclick="document.querySelector('.nav-links').classList.toggle('open')">
+        <span></span><span></span><span></span>
+      </div>
+      <nav class="nav-links">
+  <a href="#quienes-somos">Quiénes Somos</a>
+  <a href="#filosofia">Filosofía</a>
+  <a href="#menu">Menú</a>
+  <a href="#horario">Horario</a>
+  <a href="#ubicacion">Ubicación</a>
+  <a href="#contacto">Contacto</a>
+  <a href="https://www.instagram.com/chakracoffeebrunch/?hl=es" target="_blank" aria-label="Instagram">
+    <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/instagram.svg" alt="Instagram" style="width: 24px; height: 24px; filter: invert(22%) sepia(9%) saturate(1356%) hue-rotate(316deg) brightness(96%) contrast(94%);" />
+  </a>
+  <a href="https://www.tiktok.com/@chakracoffeebrunc?is_from_webapp=1&sender_device=pc" target="_blank" aria-label="TikTok">
+    <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/tiktok.svg" alt="TikTok" style="width: 24px; height: 24px; filter: invert(22%) sepia(9%) saturate(1356%) hue-rotate(316deg) brightness(96%) contrast(94%);" />
+  </a>
+</nav>
+    </div>
+  </header>
+
+  <section class="hero">
+  <img id="hero-image" src="1.jpeg" alt="Imagen principal" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; z-index:0; transition:opacity 1s ease-in-out;">
+  <div class="hero-content">
+    <h1>Chakra Coffee & Brunch</h1>
+    <p>Disfruta la mejor experiencia de café y brunch en un solo lugar.</p>
+  </div>
+</section>
+
+<script>
+  const heroImages = ['1.jpeg', '2.jpeg', '3.jpeg', '4.jpeg', '5.jpeg', '6.jpeg', '7.jpeg', '8.jpeg', '9.jpeg', '10.jpeg'];
+  let currentHero = 0;
+  const heroImg = document.getElementById('hero-image');
+
+  setInterval(() => {
+    currentHero = (currentHero + 1) % heroImages.length;
+    heroImg.style.opacity = 0;
+    setTimeout(() => {
+      heroImg.src = heroImages[currentHero];
+      heroImg.style.opacity = 1;
+    }, 500);
+  }, 5000);
+</script>
+
+
+</style>
+
+
+
+  <section id="quienes-somos">
+    <h2>Quiénes Somos</h2>
+    <p>En Chakra Coffee & Brunch somos más que una cafetería: somos un espacio creado para equilibrar tus sentidos, reconectar con tu energía y disfrutar de los pequeños placeres del día.
+      Por eso, cada detalle de nuestro concepto desde los sabores hasta el ambiente está pensado para transmitir armonía, vitalidad y buena energía.
+      Aquí, cada visita es una pausa, un ritual diario que nutre y revitaliza.</p>
+     <br>
+      <p>Somos también un lugar donde todos son bienvenidos, incluso tus compañeros de cuatro patas. Somos pet friendly, porque creemos en la conexión auténtica con quienes forman parte de tu día.</p>
+      <br>
+      <p>En Chakra, la energía se comparte, se cuida y se disfruta. Te esperamos para que vivas un brunch con propósito.</p>
+  </section>
+
+  <section id="filosofia">
+    <h2>Filosofía</h2>
+    <p>En Chakra, creemos que el bienestar comienza desde adentro. Así como los chakras equilibran la energía del cuerpo, nuestra propuesta busca armonizar cuerpo, mente y espíritu a través de una experiencia consciente de brunch y café.</p>
+   <br>
+    <p>Cada plato, cada taza, cada rincón está pensado para ayudarte a reconectar contigo mismo, a encontrar ese momento de calma y presencia en medio del día.</p>
+    <br>
+    <p>Chakra Coffee & Brunch: Energía que se siente. Equilibrio que se vive.</p>
+
+  </section>
+
+  <section id="menu">
+  <h2>Menú</h2>
+  <iframe src="carta.pdf" height="600"></iframe>
+  <div style="text-align: center; margin-top: 1.5rem;">
+    <a href="carta.pdf" download>
+      <button style="margin-top: 1rem; padding: 1rem 2rem; font-size: 1rem; background-color: var(--primary); color: white; border: none; border-radius: 8px; cursor: pointer; font-family: 'Poppins', sans-serif;">
+        📄 Descargar Carta
+      </button>
+    </a>
+  </div>
+  </section>
+
+  <section id="horario">
+  <h2>Horario</h2>
+  <img src="horario.jpeg" alt="Horario Chakra Coffee & Brunch" style="max-width: 500px; display: block; margin: 1rem auto;">
+</section>
+  </section>
+
+  <section id="ubicacion">
+    <h2>Ubicación</h2>
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3527.866383893266!2d-15.447611323855572!3d27.84464461942132!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xc409f14efa40a29%3A0x2647ae682d50702!2sChakra%20Coffee%20%26%20Brunch!5e0!3m2!1ses!2ses!4v1751561034411!5m2!1ses!2ses" height="400"></iframe>
+  </section>
+
+  <section id="contacto">
+    <h2>Contacto</h2>
+    <form action="mailto:chakracoffeebrunch@gmail.com" method="POST" enctype="text/plain">
+      <input type="text" name="nombre" placeholder="Tu nombre" required>
+      <input type="email" name="email" placeholder="Tu correo electrónico" required>
+      <textarea name="mensaje" placeholder="Tu mensaje" required></textarea>
+      <button type="submit">Enviar</button>
+    </form>
+  </section>
+
+  <footer>
+    <p>© 2025 Chakra Coffee & Brunch. Todos los derechos reservados.</p>
+  </footer>
+
+  <a href="https://wa.me/34646128366" class="whatsapp-float" target="_blank">
+    <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" alt="WhatsApp">
+    <span class="whatsapp-tooltip">Reserva tu mesa</span>
+    <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" 
+         alt="WhatsApp" 
+         width="60" 
+         height="60" />
+  </a>
+  
+  <style>
+    .whatsapp-float {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      z-index: 999;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background-color: #25D366;
+      color: white;
+      padding: 0.4rem 0.8rem;
+      border-radius: 30px;
+      text-decoration: none;
+      font-family: 'Poppins', sans-serif;
+      font-weight: bold;
+      opacity: 0.8; /* más transparente */
+      transition: opacity 0.3s ease-in-out;
+    }
+  
+    .whatsapp-float:hover {
+      opacity: 1; /* totalmente visible al pasar el mouse */
+    }
+  
+    .whatsapp-tooltip {
+      font-size: 0.9rem;
+    }
+  
+    .whatsapp-float img:first-child {
+      display: none;
+    }
+  
+    .whatsapp-float img:last-child {
+      width: 40px;
+      height: 40px;
+    }
+  </style>
+  
+  </style>
+
+<script>
+  document.querySelectorAll('.nav-links a').forEach(link => {
+    link.addEventListener('click', () => {
+      document.querySelector('.nav-links').classList.remove('open');
+    });
+  });
+</script>
+
+</body>
+</html>
